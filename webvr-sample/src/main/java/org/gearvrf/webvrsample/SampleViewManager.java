@@ -65,9 +65,14 @@ public class SampleViewManager extends GVRScript {
                 for (int z = 0; z < gridSize; ++z) {
                     if (x == 0 && y == 0 && z == 0)
                         continue;
+                    float[] pos = {x - (gridSize/2), y - (gridSize/2), z - (gridSize/2)};
+                    if (pos[0] == 0 && pos[1] == 0 && pos[2] == 0)
+                        continue;
+
                     GVRSceneObject cubeObject = new GVRCubeSceneObject(mGVRContext, true, mMaterial);
                     cubeObject.getTransform().setScale(size, size, size);
-                    cubeObject.getTransform().setPosition(x - (gridSize/2),y - (gridSize/2), z - (gridSize/2));
+                    cubeObject.getTransform().setPosition(pos[0], pos[1], pos[2]);
+
                     mScene.addSceneObject(cubeObject);
                 }
             }
